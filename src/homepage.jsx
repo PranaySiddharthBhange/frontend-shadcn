@@ -115,6 +115,10 @@ function Homepage() {
         title: "Scheduled: Catch up",
         description: appointmentDate ? `Date : ${appointmentDate}` : 'Date not available',
       });
+
+      setTimeout(function() {
+        location.reload();
+    }, 5000);
     } catch (error) {
       // If an error occurs during submission, display error toast message
       toast({
