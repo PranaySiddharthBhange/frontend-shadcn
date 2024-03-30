@@ -11,8 +11,8 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 
-import { Package2Icon, Search, Calendar, LogOut } from "lucide-react"
-import React, { useState ,useContext} from 'react';
+import { Search, Calendar, LogOut } from "lucide-react"
+import React, { useContext } from 'react';
 
 import { AuthContext } from './authprovider';
 
@@ -21,58 +21,74 @@ export default function Dashboard() {
     const { logout } = useContext(AuthContext);
 
 
-    function handleLogout ( ){
-      logout()
+    function handleLogout() {
+        logout()
     }
     return (
         <div className="flex flex-col w-full min-h-screen">
 
-            <header className="flex justify-start">
 
-                <div className="flex flex-col md:flex-row">
-                    <div className="md:mr-4 mb-4 md:mb-0 w-full md:w-auto">
-                        <a className="flex" href="#">
-                            <Button variant="link" >
-                                <Calendar className="w-6 h-6 mr-2" />
-                                Appointment
-                            </Button>
-                        </a>
-                        <Select>
-                            <SelectTrigger >
+            <div className="flex justify-between items-center flex-wrap mt-6">
+
+
+
+                <a className="fixed top-4 left-4" href="#">
+                    <Button variant="link">
+                        <Calendar className="w-6 h-6 mr-2" />
+                        Appointment
+                    </Button>
+                </a>
+
+
+
+                <Button onClick={handleLogout} className="rounded-full fixed top-4 right-4" size="icon" variant="ghost">
+                    <LogOut />
+                </Button>
+
+
+
+
+                <div className="flex justify-between items-center  mt-10 mx-6">
+                        <Select className="fixed top-4 right-10 ">
+                            <SelectTrigger>
                                 <SelectValue placeholder="Sort" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Sort</SelectLabel>
-                                    <SelectItem value="apple">All</SelectItem>
-                                    <SelectItem value="banana">Male</SelectItem>
-                                    <SelectItem value="blueberry">Female</SelectItem>
-                                    <SelectItem value="grapes">Age</SelectItem>
-                                  
+                                    <SelectItem value="all">All</SelectItem>
+                                    <SelectItem value="male">Male</SelectItem>
+                                    <SelectItem value="female">Female</SelectItem>
+                                    <SelectItem value="age">Age</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
-                        </Select>
-                    </div>
-                    <div className="">
-                        <form className="flex flex-row">
-                            <div className="relative">
-                                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                                <Input
-                                    className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-                                    placeholder="Search patients..."
-                                    type="search"
-                                />
-                            </div>
-                        </form>
-                    </div>
+                        </Select>                   
+
+                <div className="relative ml-6">
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
+                    <Input
+                        className="pl-8 w-full md:w-[300px] lg:w-[300px]"
+
+                        placeholder="Search patients..."
+                        type="search"
+                    />
+                </div>
+
                 </div>
 
 
-                <Button onClick={handleLogout} className="rounded-full" size="icon" variant="ghost">
-                    <LogOut></LogOut>
-                </Button>
 
-            </header>
+
+
+
+
+
+            </div>
+
+
+
+
+
 
 
             <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
