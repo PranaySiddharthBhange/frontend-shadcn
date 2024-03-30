@@ -101,7 +101,7 @@ function Homepage() {
       console.log(dataToSend);
 
       // Make POST request to API endpoint
-      const response = await axios.post('http://localhost:5000/api/appointment', dataToSend);
+      const response = await axios.post('/api/appointment', dataToSend);
 
       // Log success message and response data
       console.log('Appointment successfully submitted');
@@ -116,9 +116,9 @@ function Homepage() {
         description: appointmentDate ? `Date : ${appointmentDate}` : 'Date not available',
       });
 
-      setTimeout(function() {
+      setTimeout(function () {
         location.reload();
-    }, 5000);
+      }, 5000);
     } catch (error) {
       // If an error occurs during submission, display error toast message
       toast({
@@ -163,7 +163,7 @@ function Homepage() {
           <a href="#contact">        <Button variant="link" className="font-normal">Contact</Button>
           </a>
           <a href="/login">          <Button variant="link" className="font-normal">Login</Button>
-</a>
+          </a>
           <Toggle />
         </div>
       </div>

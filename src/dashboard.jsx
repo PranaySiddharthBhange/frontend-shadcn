@@ -13,7 +13,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
+import Toggle from "./toggle";
 import { Search, Calendar, LogOut } from "lucide-react"
 import React, { useContext } from 'react';
 
@@ -31,13 +31,13 @@ export default function Dashboard() {
         const token = localStorage.getItem("token");
 
         if (token) {
-            axios.get("http://localhost:5000/api/patients/", {
+            axios.get("/api/patients/", {
                 headers: { Authorization: `Bearer ${token}` },
             })
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch((error) => console.log(error));
+                .then((response) => {
+                    setData(response.data);
+                })
+                .catch((error) => console.log(error));
         }
         console.log(sortOption)
     }, [sortOption]);
@@ -61,21 +61,56 @@ export default function Dashboard() {
 
     const handleSortChange = (value) => {
         setSortOption(value);
-      };
-    
+    };
+
 
     return (
         <div className="flex flex-col w-full min-h-screen">
-            <div className="flex justify-between items-center flex-wrap mt-6">
-                <a className="fixed top-4 left-4" href="#">
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="flex justify-between items-center mt-4">
+                <a href="#" className="ml-4">
                     <Button variant="link">
                         <Calendar className="w-6 h-6 mr-2" />
                         Appointment
                     </Button>
                 </a>
-                <Button onClick={handleLogout} className="rounded-full fixed top-4 right-4" size="icon" variant="ghost">
-                    <LogOut />
-                </Button>
+
+                <div className="mr-4">
+                    <Button onClick={handleLogout} className="mr-2" size="icon" variant="ghost">
+                        <LogOut style={{width:'18px',height:'18px'}}/>
+                    </Button>
+
+                    <Button className="mr-2" size="icon" variant="ghost">
+                        <Toggle />
+                    </Button>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="flex justify-between items-center flex-wrap" >
+
+
                 <div className="flex justify-between items-center  mt-10 mx-6">
                     <Select className="fixed top-4 right-10" onValueChange={handleSortChange}>
                         <SelectTrigger>

@@ -49,7 +49,7 @@ function Login() {
         return;
     }
       
-      const response = await axios.post('http://localhost:5000/api/users/login', {
+      const response = await axios.post('/api/users/login', {
         email: email,
         password: password
       });
@@ -68,7 +68,7 @@ function Login() {
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
         
-        // description: `${error}`,
+        description: `${error}`,
 
         action: <ToastAction altText="Try again">Try again</ToastAction>,
       });
