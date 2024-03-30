@@ -37,6 +37,9 @@ const AuthProvider = ({ children }) => {
     setIsAuthenticated(false);
   };
 
+
+
+
   // Provide AuthContext value to children components
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
